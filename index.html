@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Angular Directive and Scope</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="https://code.angularjs.org/1.4.1/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular-resource.js"></script>
+    <script src="scripts/app.js"></script>
+  </head>
+
+  <body ng-controller="AppCtrl as app">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Parent scope</h4>
+          <h5 style="color:{{color}}">
+            My name is {{name}}  
+                        <button class="btn btn-primary" ng-click="app.reverseName()">Reverse</button>
+            <button class="btn btn-primary" ng-click="app.randomColor()">Colorize</button>
+          </h5>
+          <h4>Directive with scope:false, restrict:'E', replace:true</h4>
+          <name-changer></name-changer>
+          <h4>Directive with scope:true, restrict:'C'</h4>
+          <div class="form-group name-changer-new"></div>
+          <h4>Directive with isolated scope: {}, restrict:'A' </h4>
+          <div class="form-group" name-changer-isolated="{{name}}" color="color" reverse="app.reverseName()"></div>
+        </div>
+      </div>
+    </div>
+    <page>
+      <h4>Transclusion</h4>
+      <page-content>
+        <page-item size="2">
+          <h2>Row 1</h2>
+        </page-item>
+        <page-item size="10">
+          <h4>Bootstrap grid inside directive</h4>
+          <p>Some content in bootstrap container</p>
+        </page-item>
+      </page-content>
+      <page-content>
+        <page-item size="2">
+          <h2>Row 2</h2>
+        </page-item>
+        <page-item size="10">
+          <h4>Bootstrap grid inside directive</h4>
+          <p>Some content in bootstrap container</p>
+        </page-item>
+      </page-content>
+    </page>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <bike brand="GT" brake="drum" full-suspension=""></bike>
+          <bike brand="Giant" brake="disc" hard-tail=""></bike>
+        </div>
+      </div>
+    </div>
+    <simple></simple>
+  </body>
+
+</html>
